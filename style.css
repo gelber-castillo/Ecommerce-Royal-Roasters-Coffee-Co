@@ -1,0 +1,167 @@
+/* Header */
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+/* Header End */
+
+body {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  color: #000000;
+  font-size: 12pt;
+  background-color: #ECD4AF;
+  /* complementary color #f6ead8 */
+}
+
+.search-bar-div{
+  display: inline-block;
+  margin: auto;
+  width: 100%;
+  /* padding: 10px; */
+}
+
+form.search-bar-form input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid black;
+  border-radius: 4px;
+  float: left;
+  width: 100%;
+}
+
+.coffee-prod-grid{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.product_card {
+  display: inline-block;
+  top: 0px;
+  position: relative;
+  max-width: 250px;
+  background-color: #f6ead8;
+  border-radius: 4px;
+  padding: 24px 24px;
+  margin: 10px;
+  text-decoration: none;
+  border: 1px solid black;
+  transition: all 0.2s ease;
+  justify-content: center;
+
+}
+.product_card:hover {
+  box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+  top: -4px;
+  border: 1px solid white;
+  background-color: white;
+}
+
+.product_card:before {
+  position: relative;
+  background: #00838d;
+}
+.coffee-image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.product-info{
+  color: #0060B6;
+  text-align: center;
+  text-decoration: none;
+}
+a:link{
+  text-decoration:none;
+}
+.button-div:hover{
+  color:#00A0C6;
+  text-decoration:none;
+  cursor:pointer;
+}
+.shop_body {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+button {
+  background-color: #191919;
+  border: none;
+  color: white;
+  padding: 7px 24px;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: #333333;
+  text-decoration: none;
+  cursor:pointer;
+}
+
+/* viewProduct.php */
+.Poster{
+  display: grid;
+  grid-template-columns: 400px 400px;
+  /* grid-gap: 40px; */
+  justify-content: center;
+  border-radius: 15px 50px 30px;
+  border: 1px solid black;
+  background: #f6ead8;
+  padding: 30px;
+  width: 800px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.imgPoster{
+  display: flex;
+  justify-content: center;
+  /* border: 1px solid black; */
+  border-radius: 15px 50px 30px;
+  align-items: center;
+  background: #FEFBEA;
+  padding: 24px 24px;
+
+}
+.infoPoster{
+  display: block;
+  text-align: right;
+  text-decoration: none;
+  /* border-radius: 15px 50px 30px;
+  background: #FEFBEA; */
+  padding: 24px 24px;
+
+}
+/* viewProduct.php */
+
+/* cart.php */
+.cart-message{
+  text-align: center;
+}
+.cart-table{
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+table {
+  align-self: center;
+}
+.submit-cart{
+  text-align: center;
+}
+/* cart.php */
