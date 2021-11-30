@@ -1,6 +1,7 @@
 create table customer
   ( userID int(5) unsigned not null auto_increment,
     username varchar(50) not null,
+    password varchar(50) not null,
     email varchar(25) not null,
     fname varchar (20) not null,
     lname varchar (20) not null,
@@ -97,40 +98,25 @@ insert into employee (empID, emp_fname, emp_lname, emp_address, position, ssn, m
 
 create table cart
   ( userID int unsigned not null,
-    coffeeID int unsigned not null,
+    coffeeID int(4) unsigned not null,
     quantity tinyint unsigned not null,
-    cost float(4,2) unsigned not null,
 
     foreign key (userID) references customer(userID),
     foreign key (coffeeID) references coffee(coffeeID)
   );
 
 create table orders
-  ( orderID int unsigned not null,
-    userID int unsigned not null,
-    total float(6,2),
-    date date not null,
-
-    primary key (orderID),
-    foreign key (orderID) references orders(orderID),
-    foreign key (userID) references customer(userID)
-  );
-
-create table order_info
-  ( orderID int unsigned not null,
+  ( userID int unsigned not null,
+    ordertime datetime not null,
     coffeeID int(4) unsigned not null,
     quantity int(3) unsigned not null,
 
-    primary key (orderID),
-    foreign key (orderID) references orders(orderID),
-    foreign key (coffeeID) references coffee(coffeeID),
-    foreign key (quantity) references cart(quantity)
+    foreign key (userID) references customer(userID),
+    foreign key (coffeeID) references coffee(coffeeID)
   );
 
-create table logins
-  ( username varchar(50) not null,
-    password varchar(20) not null,
-
-    primary key (username),
-    foreign key (username) references customer(username)
-  );
+  insert into orders (userID, ordertime, coffeeID, quantity) values
+    (1, '0000-00-00 00:00:00', 7001, 1),
+    (1, '0000-00-00 00:00:00', 7002, 2),
+    (1, '0000-00-00 00:00:00', 7003, 1),
+    (2, '0000-00-00 00:00:00', 7001, 2);
