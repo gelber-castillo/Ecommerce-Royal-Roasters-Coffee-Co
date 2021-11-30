@@ -18,10 +18,6 @@ if (!$searchterm || !$searchtype){
   $result = $db->query($query);
   $rows = $result->fetch_all(MYSQLI_ASSOC);
 }
-// if (!get_magic_quotes_gpc()){
-//   $searchtype = addslashes($searchtype);
-//   $searchterm = addslashes($searchterm);
-// }
 //else, display selected products
 else{
   $query = "select * from coffee where ".$searchtype." like '%".$searchterm."%'";
