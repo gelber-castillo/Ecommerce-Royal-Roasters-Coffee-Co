@@ -48,39 +48,52 @@
   </div>
   <?php
 
-
   //delete from cart where userID in ('1')
-  $newquery = "select * from cart where userID=1";
-  $newresult = $db->query($newquery);
+  // $newquery = "select * from cart where userID=1";
+
+  $joinquery = "select cart.*, coffeeName, price
+                from coffee
+                join cart on coffee.coffeeID = cart.coffeeID
+                where userID=1";
+
+  $newresult = $db->query($joinquery);
+  if (!$newresult){
+    echo "An error has occurred.  The item was not added to cart.</br>";
+  }
   $array = $newresult->fetch_all(MYSQLI_ASSOC);
 
   $grand_total = 0;
   $NJtax = 1.06625;
   ?>
+  <h1 style="text-align:center;">Your Cart</h1>
   <div class="cart-table">
-  <table border="1" style="width:40%">
+  <table border="0" style="width:60%; text-align: left;">
     <tr>
       <th>User ID</th>
-      <th>Coffee ID</th>
+      <th>Name</th>
+      <th>Product ID</th>
       <th>Quantity</th>
-      <th>Cost Per Item</th>
+      <th>Price</th>
       <th>Total</th>
     </tr>
 
     <?php
     foreach($array as $item){
-      $userID=$item['userID'];
-      $coffeeID=$item['coffeeID'];
-      $quantity=$item['quantity'];
-      $cost = $item['cost'];
-      $total=$item['cost'] * $quantity;
+      $userID     =$item['userID'];
+      $coffeeName =$item['coffeeName'];
+      $coffeeID   =$item['coffeeID'];
+      $quantity   =$item['quantity'];
+      $price      =$item['price'];
+      $total      =$item['price'] * $quantity;
       ?>
-    <tr>
-      <td><?php echo $userID;   ?></td>
-      <td><?php echo $coffeeID; ?></td>
-      <td><?php echo $quantity; ?></td>
-      <td>$<?php echo $cost;    ?></td>
+    <tr border="1">
+      <td><?php echo $userID;     ?></td>
+      <td><?php echo $coffeeName; ?></td>
+      <td><?php echo $coffeeID;   ?></td>
+      <td><?php echo $quantity;   ?></td>
+      <td>$<?php echo $price;     ?></td>
       <td>$<?php echo number_format($total, 2); ?></td>
+      <td style="border:none;"><button style="font-size:11px;">remove</button></td>
       <?php $grand_total += $total;
     } ?>
     </tr>
@@ -88,7 +101,7 @@
   </div>
   <div class="submit-cart">
     <h3>Grand Total (including tax): $<?php echo number_format(($grand_total*$NJtax), 2)." "; ?></h3>
-    <form method="post" action="#">
+    <form method="post" action="submitOrder.php">
        <!-- <input type="hidden" name="selected_coffeeID" value="<?php echo $coffeeID; ?>"> -->
        <button name="submitOrder">Submit Order</button>
     </form>
