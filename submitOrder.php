@@ -1,11 +1,15 @@
 <html>
 <head>
-  <?php include "header.php" ?>
+  <?php
+  session_start();
+  require_once('functions.php');
+  include "header.php";
+  check_valid_user();
+  ?>
 </head>
 <body>
   <?php
   $ordertime  = date('Y-m-d H:i:s');
-  $orderquery = "select * from orders where ordertime='".$ordertime."'";
   $error      = 0;
 
   @ $db = new mysqli('localhost', 'root', '', 'RoyalRoasters');
@@ -14,7 +18,7 @@
      exit;
   }
 
-  $getcartitems = "select * from cart where userID=1";
+  $getcartitems = "select * from cart where userID=".$_SESSION['userID'];
   $result = $db->query($getcartitems);
   $cartarray = $result->fetch_all(MYSQLI_ASSOC);
   $result->free();
@@ -44,7 +48,7 @@
       $err+=1;
     }
     //query to remove the item from the user's cart
-    $deletecart = "delete from cart where userID in ('1') and coffeeID=".$coffeeID;
+    $deletecart = "delete from cart where userID in ('".$_SESSION['userID']."') and coffeeID=".$coffeeID;
     $result = $db->query($deletecart);
     if(!$result){
       $err+=1;
@@ -54,7 +58,10 @@
   <h1 style="text-align:center;">
   <?php
   if($err==0){
-    echo "Order successfully submitted.</br>Thank you for your business.";
+    echo "Order successfully submitted.</br>Thank you for your business.</br>";
+    ?>
+    <a href="viewOrders.php">View your order history</a>
+    <?php
   }
   else {
     echo "An error has occurred while submitting the order. error=".$err;
@@ -63,6 +70,6 @@
   </h1>
   <?php
   $db->close();
- ?>
+  ?>
 </body>
 </html>
