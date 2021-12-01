@@ -1,6 +1,23 @@
 <html>
 <head>
-  <?php include "header.php" ?>
+  <?php
+  session_start();
+  require_once('functions.php');
+  include "header.php";
+  check_valid_user();
+  //get userID for use in the sessions
+  @ $db = new mysqli('localhost', 'root', '', 'RoyalRoasters');
+  if (mysqli_connect_errno()) {
+     echo "Error: Could not connect to database.  Please try again later.";
+     exit;
+  }
+  $IDquery = "select userID from customer where username='".$_SESSION['valid_user']."'";
+  $IDresult = $db->query($IDquery);
+  $IDresult = mysqli_fetch_assoc($IDresult);
+  $ID = $IDresult['userID'];
+  $_SESSION['userID'] = $ID;
+  //ok done
+?>
 </head>
 <body>
 <?php
@@ -24,6 +41,7 @@ else{
   $result = $db->query($query);
   $rows = $result->fetch_all(MYSQLI_ASSOC);
 }
+
 ?>
 </br>
 
@@ -36,7 +54,6 @@ else{
     <option value="roast">Roast
     <option value="origin">Country
   </select>
-  <!-- <input type="submit" name="submit" value="Search"> -->
 </form>
 </div>
 
@@ -48,7 +65,6 @@ foreach($rows as $prod) {
   $coffeeID = $prod['coffeeID'];
 ?>
   <div class="product_card">
-    <!-- <a href="#" class="product"> -->
     <div class="coffee-image"> <img src="images/comingsoon.png" style="width:250px; height:220px;"></div>
     <div class="product-info">
       <h4><?php echo $prod['coffeeName'];?></h4>
