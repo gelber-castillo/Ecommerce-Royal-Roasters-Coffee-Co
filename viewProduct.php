@@ -1,6 +1,11 @@
 <html>
 <head>
-  <?php include "header.php" ?>
+  <?php
+  session_start();
+  require_once('functions.php');
+  include "header.php";
+  check_valid_user();
+  ?>
 </head>
 <body>
   <?php
@@ -41,8 +46,7 @@
           <form action="cart.php" method="get">
             <input type="number" min="1" max=<?php echo $inventory ?> name="quantity" size="5" value="quantity">
             <input type="hidden" name="selected_coffeeID" value=<?php echo $coffeeID; ?> />
-            <input type="hidden" name="price" value=<?php echo $price; ?> />
-            <button name="cartButton">Add to cart</button>
+            <button>Add to cart</button>
           </form>
         </div>
   </div>
