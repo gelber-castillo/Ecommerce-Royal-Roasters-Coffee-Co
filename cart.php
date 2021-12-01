@@ -1,12 +1,17 @@
+<?php session_start() ?>
 <html>
 <head>
-  <?php include "header.php" ?>
+  <?php
+  session_start();
+  require_once('functions.php');
+  include "header.php";
+  check_valid_user();
+  ?>
 </head>
 <body>
   <?php
   $selected_coffeeID = $_GET['selected_coffeeID'];
   $quantity = $_GET['quantity'];
-  $price = $_GET['price'];
 
   @ $db = new mysqli('localhost', 'root', '', 'RoyalRoasters');
   if (mysqli_connect_errno()) {
@@ -17,12 +22,13 @@
   ?>
   <div class="cart-message">
   <?php
-  $askquery = "select count(*) as total from cart where userID=1 and coffeeID=".$selected_coffeeID;
+
+  $askquery = "select count(*) as total from cart where userID=".$_SESSION['userID']." and coffeeID=".$selected_coffeeID;
   $askresult = $db->query($askquery);
   $askrows = mysqli_fetch_assoc($askresult);
   if($askrows['total'] < 1){
     $query = "insert into cart values
-              (1, '".$selected_coffeeID."', '".$quantity."', '".$price."')";
+              (".$_SESSION['userID'].", '".$selected_coffeeID."', '".$quantity."')";
 
     $result = $db->query($query);
 
@@ -32,7 +38,8 @@
         echo "An error has occurred.  The item was not added to cart.</br>";
     }
   } else{
-    $query = "select * from cart where userID=1 and coffeeID=".$selected_coffeeID;
+    //Preventing 2 of the same entires in cart. Updates quantity of item instead
+    $query = "select * from cart where userID=".$_SESSION['userID']." and coffeeID=".$selected_coffeeID;
     $askresult = $db->query($query);
     $askarray = mysqli_fetch_assoc($askresult);
     $askquantity = $askarray['quantity'];
@@ -54,7 +61,7 @@
   $joinquery = "select cart.*, coffeeName, price
                 from coffee
                 join cart on coffee.coffeeID = cart.coffeeID
-                where userID=1";
+                where userID=".$_SESSION['userID'];
 
   $newresult = $db->query($joinquery);
   if (!$newresult){
@@ -102,7 +109,6 @@
   <div class="submit-cart">
     <h3>Grand Total (including tax): $<?php echo number_format(($grand_total*$NJtax), 2)." "; ?></h3>
     <form method="post" action="submitOrder.php">
-       <!-- <input type="hidden" name="selected_coffeeID" value="<?php echo $coffeeID; ?>"> -->
        <button name="submitOrder">Submit Order</button>
     </form>
   </div>
