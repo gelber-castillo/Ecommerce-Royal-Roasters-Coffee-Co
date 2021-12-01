@@ -1,7 +1,7 @@
 create table customer
   ( userID int(5) unsigned not null auto_increment,
     username varchar(50) not null,
-    password varchar(50) not null,
+    passwd varchar(50) not null,
     email varchar(25) not null,
     fname varchar (20) not null,
     lname varchar (20) not null,
@@ -10,9 +10,9 @@ create table customer
     primary key (userID)
   );
 
-insert into customer (userID, username, email, fname, lname, address) values
-  (00001,'gelcas','test@mail.com','Gelber','Castillo','1 Normal Ave, Montclair, NJ 07043'),
-  (00002,'samruf','mail@test.com','Samuel','Rufino','1 Normal Ave, Montclair, NJ 07043');
+insert into customer (userID, username, passwd, email, fname, lname, address) values
+  (00001,'gelcas','root','test@mail.com','Gelber','Castillo','1 Normal Ave, Montclair, NJ 07043'),
+  (00002,'samruf','root','mail@test.com','Samuel','Rufino','1 Normal Ave, Montclair, NJ 07043');
 
 create table coffee
   (  coffeeID int(4) unsigned not null,
@@ -120,3 +120,4 @@ create table orders
     (1, '0000-00-00 00:00:00', 7002, 2),
     (1, '0000-00-00 00:00:00', 7003, 1),
     (2, '0000-00-00 00:00:00', 7001, 2);
+
