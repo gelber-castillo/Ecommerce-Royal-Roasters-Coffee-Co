@@ -3,9 +3,9 @@
   require_once('functions.php');
   include "header.php";
   check_valid_user();
-
-  $selected_coffeeID = $_SESSION['selected_coffeeID'];
-  $quantity = $_POST['quantity'];
+  
+  $selected_coffeeID    = $_SESSION['selected_coffeeID'];
+  $quantity             = $_POST['quantity'];
 
   @ $db = DBconnect();
   ?>
@@ -43,11 +43,13 @@
       $askarray     = mysqli_fetch_assoc($askresult);
       $askquantity  = $askarray['quantity'];
       $totalquantity=$quantity+$askquantity;
-      $query        = "update cart set quantity=".$totalquantity." where coffeeID=".$selected_coffeeID." and userID=".$_SESSION['userID'];$updateresult = $db->query($query);
+      $query        = "update cart set quantity=".$totalquantity." where coffeeID=".$selected_coffeeID." and userID=".$_SESSION['userID'];
+      $updateresult = $db->query($query);
       if ($updateresult) {
           echo "Order was updated.</br></br>";
       } else {
-          echo "An error has occurred. The item was not updated.</br>";
+          $test=$quantity+$askquantity;
+          echo "An error has occurred. The item was not updated.</br>".$test;
       }
     }
   }
@@ -112,7 +114,6 @@
       <td>$<?php echo $price;     ?></td>
       <td>$<?php echo number_format($total, 2); ?></td>
       <td style="border:none;">
-        <!-- delete button -->
         <form method="post" action="DBcartDelete.php">
           <button name="cartCoffee" value=<?php echo $coffeeID;?> style="font-size:11px;">remove</button>
           <input name="cartUID" type="hidden" name="your_field_name[]" value=<?php echo $userID;?> />
