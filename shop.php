@@ -1,34 +1,12 @@
-<html>
-<head>
-  <?php
-  session_start();
-  require_once('functions.php');
-  include "header.php";
-  check_valid_user();
-  //get userID for use in the sessions
-  @ $db = new mysqli('localhost', 'root', '', 'RoyalRoasters');
-  if (mysqli_connect_errno()) {
-     echo "Error: Could not connect to database.  Please try again later.";
-     exit;
-  }
-  $IDquery = "select userID from customer where username='".$_SESSION['valid_user']."'";
-  $IDresult = $db->query($IDquery);
-  $IDresult = mysqli_fetch_assoc($IDresult);
-  $ID = $IDresult['userID'];
-  $_SESSION['userID'] = $ID;
-  //ok done
-?>
-</head>
-<body>
 <?php
+session_start();
+require_once('functions.php');
+include "header.php";
+check_valid_user();
+
 $searchtype=$_POST['searchtype'];
 $searchterm = trim($_POST['searchterm']);
-@ $db = new mysqli('localhost', 'root', '', 'RoyalRoasters');
-
-if (mysqli_connect_errno()) {
-   echo "Error: Could not connect to database.  Please try again later.";
-   exit;
-}
+@ $db = DBconnect();
 // if no results, display all products
 if (!$searchterm || !$searchtype){
   $query = 'select * from coffee';
@@ -63,16 +41,21 @@ else{
 <?php
 foreach($rows as $prod) {
   $coffeeID = $prod['coffeeID'];
+  // image pathing creation. if nonexistant, use palceholder image
+  $imgpath  = "images/".$coffeeID.".jpg";
+  if (!(file_exists($imgpath))) {
+      $imgpath = "images/comingsoon.png";
+  }
 ?>
   <div class="product_card">
-    <div class="coffee-image"> <img src="images/comingsoon.png" style="width:250px; height:220px;"></div>
+    <div class="coffee-image"> <img src=<?php echo $imgpath;?> style="width:250px; height:220px;"></div>
     <div class="product-info">
       <h4><?php echo $prod['coffeeName'];?></h4>
       <h5>$<?php echo $prod['price'];?></h5>
 
       <form method="get" action="viewProduct.php">
          <input type="hidden" name="selected_coffeeID" value="<?php echo $coffeeID; ?>">
-         <button name="viewButton">View</button>
+         <button>View</button>
       </form>
     </div>
   </div>
@@ -84,6 +67,3 @@ if (($result->num_rows)==0){
 }
 $result->free();
 $db->close(); ?>
-
-</body>
-</html>
