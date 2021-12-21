@@ -21,80 +21,79 @@ create table coffee
      roast varchar(6) not null,
      description text,
      inventory int(3) unsigned not null,
-     price float(4,2),
-     /*img varchar(50) default 'images/comingsoon.png',*/
+     price float(5,2) not null,
      primary key (coffeeID)
  );
 
  insert into coffee (coffeeID, coffeeName, origin, roast, description, inventory, price) values
-   (7001, "Javan Coffee", "Indonesia","dark", "A delicious blend.",10, 9.99),
-   (7002, "Colombian Medium", "Colombia","medium", "A delicious blend.", 10, 14.99),
-   (7003, "Italian Roast","Italy", "light", "An Italian blend perfect for espressos.", 10, 8.99),
-   (7004, "Turkish Coffee","Turkey", "dark", "Flavorful and packs a punch!", 10, 9.99),
-   (7005, "Guatemalan Delight", "Guatemala","light", "From the foothills of Lake Atitlan.", 10, 14.99),
-   (7006, "Guatemalan House Blend", "Guatemala","dark", "Aromatic blend from Antiguan farms.", 20, 9.99),
-   (3593, "Arabian Medium","Jordan", "medium", "A classic blend.", 0, 4.99),
-   (2344, "Italian Light", "Italy","light", "A perfect morning blend.", 9, 8.99),
-   (4673, "Turkish Light Coffee", "Turkey","light", "All the flavor with less caffine.", 10, 11.99),
-   (6894, "Javan Medium Roast", "Indonesia","medium", "A delicious blend.", 10, 4.99),
-   (1246, "Colombian Light Medium", "Colombia","light", "Farmed on the foothills of the Andes.", 8, 9.99),
-   (9865, "Italian Dark Roast","Italy", "Dark", "A lovely evening blend.", 10, 10.99),
-   (3385, "Arabian Light Roast", "Egypt","light", "A blend meant to start your day.", 15, 9.99),
-   (8435, "Arabian Medium Roast - Vanilla","Jordan", "medium", "Nothing like it!", 7, 9.99),
-   (7653, "Arabian Dark Roast", "Cyprus","dark", "Dark and with an abundance of flavor.", 6, 8.99),
-   (5384, "Italian Mocha", "Italy","light", "A delicious blend.", 4, 8.99),
-   (8445, "Hawaiian","USA", "medium", "An tropical delight!", 10, 9.99),
-   (9759, "Honolulu Blend","USA", "dark", "100% organic and supports local farmers.", 5, 14.99),
-   (9765, "Colombian Blend", "Colombia","medium", "A lovely medium roast for any occasion.", 20, 4.99),
-   (7983, "English Roast", "United Kingdom","light", "A unique and distinguished flavor.", 14, 8.99),
-   (4999, "French Light Blend", "France","light", "Avant garde and moody.", 3, 9.99),
-   (5000, "French Medium Blend ", "France","medium", "With a flavor to make you want more.", 10, 9.99),
-   (5001, "French Dark Blend", "France","Dark", "A delicious and dark blend.", 2, 9.99),
-   (7482, "Alp Light Roast", "Switzerland","medium", "Bringing the best of Italian and French roasts.", 1, 19.99),
-   (8475, "Austrian Roast", "Austria","medium", "Artistic perfection.", 10, 24.99),
-   (7392, "Tokyo Special Blend", "Japan","dark", "A dark Pacific blend that will leave you craving more.", 10, 14.99),
-   (7593, "Ethiopian Light Roast", "Ethiopia","light", "A delicious light African blend.", 15, 9.99),
-   (7594, "Ethiopian Medium Roast", "Ethiopia","medium", "A flavor unlike any other.", 10, 9.99),
-   (7595, "Ethiopian Dark Roast", "Ethiopia","dark", "A delicious dark blend.", 12, 9.99),
-   (9475, "Brazilian Blend", "Brazil","medium", "A taste as wild as the Amazon!", 10, 14.99),
-   (7444, "Danish Straits", "Denmark","light", "European artistry.", 7, 24.99);
+   (9001,"Stone Street","Kenya","medium","Rated as the best tasting brand",15,27.99),
+   (9002,"Death Wish Coffee","Colombia","dark","The World\’s Strongest Coffee",16,19.99),
+   (9003,"Spirit Animal Coffee","Honduras","medium","Best organic coffee brand",10,22.99),
+   (9004,"Real Good Coffee Co.","USA","medium","Best budget",10,12.99),
+   (9005,"Volcanica Coffee","Ethiopia","medium","Best Arabica coffee brand",10,25.99),
+   (9006,"Nescafe Azera Intenso","England","medium","Best instant coffee brand",12,11.99),
+   (9007,"Trade Coffee","USA","light","Best USA coffee brand",10,19.99),
+   (9008,"Bizzy Organic","Guatemala","dark","Best cold brew coffee brand",15,29.99),
+   (9009,"Cardiology Coffee","Honduras","medium","Best low acid coffee brand",10,22.99),
+   (9010,"Fresh Roasted Coffee","Mexico","light","Best Mexican coffee brand",12,18.99),
+   (9011,"Sea Island","USA","light","Best Hawaiian coffee brand",5,100.00),
+   (9012,"Lavazza","Italy","medium","Best Italian coffee brand",20,19.99),
+   (9013,"Don Francisco\'s","Cuba","dark","Best-flavoured coffee brand",15,19.99),
+   (9014,"Caribou Coffee","Brazil","light","Best light roast coffee brand",10,14.99),
+   (9015,"High Voltage","Colombia","dark,","The kick-start you deserve from your morning coffee",10,15.99),
+   (9016,"Chameleon","Guatemala","medium","Way way awesome beans, sourced from Huehuetenango",15,19.99),
+   (9017,"Lifeboost","Kenya","dark","Unique, rare Pacamara beans",10,39.99),
+   (9018,"JO","Colombia","medium","Delicious gourmet coffee that is grown naturally",10,17.99),
+   (9019,"Blue Mountain Coffee","Panama","medium","Prominent fruit flavors, light acidity",10,15.99),
+   (9020,"New England Coffee","USA","medium","Butter pecan",10,19.99),
+   (9021,"Stumptown Coffee Roasters","Indonesia","medium","Hair Bender Whole Bean Coffee",15,24.99),
+   (9022,"Peet\’s Coffee","Ethiopia","medium","Big Bang",10,19.99),
+   (9023,"La Colombe","Brazil","dark","Chocolate, red wine, and spices",13,21.99),
+   (9024,"Intelligentsia","El Salvador","dark","Frequency Blend",15,19.99),
+   (9025,"Counter Culture Coffee","Papua New Guinea","medium","Roasted on the day that they are shipped",10,29.99),
+   (9026,"Mount Hagen","Papua New Guinea","medium","Quick, easy, efficient, and delicious",12,19.99),
+   (9027,"Red Bay Coffee","Tanzania","light","East Fourteenth Tanzanian Coffee Beans",7,24.99),
+   (9028,"Peerless","France","dark","Direct Trade Organic French Roast",15,27.99),
+   (9029,"Koffee Kult","Guatemala","dark","Enjoy warming notes of cinnamon and cocoa",16,17.99),
+   (9030,"Black Ivory Coffee","Thailand","light","Passed through an elephant's digestive system",2,150.00);
 
 create table department
   ( deptID int(1) unsigned not null auto_increment,
     deptName varchar(20) not null,
     dept_address varchar(100) not null,
-    num_of_emps int not null,
     managerID int(3) unsigned not null,
 
     primary key (deptID),
     foreign key (managerID) references employee(empID)
   );
-insert into department (deptID , deptName , dept_address , num_of_emps , managerID) values
-  (1,'Administration','1 Normal Ave, Montclair, NJ 07043',2,100),
-  (2,'Roastery','2 Normal Ave, Montclair, NJ 07043',2,101),
-  (3,'Distribution','3 Normal Ave, Montclair, NJ 07043',2,104);
+insert into department (deptID , deptName , dept_address , managerID) values
+  (1,'Administration','1 Normal Ave, Montclair, NJ 07043',100),
+  (2,'Roastery','2 Normal Ave, Montclair, NJ 07043',101),
+  (3,'Distribution','3 Normal Ave, Montclair, NJ 07043',104);
 
 create table employee
   ( empID int(3) unsigned not null auto_increment,
     emp_fname varchar (20) not null,
     emp_lname varchar (20) not null,
     emp_address varchar(100) not null,
-    position varchar(20) not null,
-    ssn char(8) not null,
+    position tinyint not null,
+    ssn char(9) not null,
     managerID int(3) unsigned not null,
     deptID int(1) unsigned not null,
+    e_username varchar(20) not null,
+    e_passwd varchar(50) not null,
 
     primary key (empID),
     foreign key (deptID) references department(deptID)
   );
 
-insert into employee (empID, emp_fname, emp_lname, emp_address, position, ssn, managerID, deptID) values
-  (100,'Gelber','Castillo','1 Normal Ave, Montclair, NJ 07043','Owner','12345678',100,1),
-  (101,'Samuel','Rufino','1 Normal Ave, Montclair, NJ 07043','Co-owner','87654321',101,2),
-  (102,'Jane','Doe','10 Test Ave, Hoboken, NJ 07043','Team Member','55555555',100,1),
-  (103,'Joe','Shmoe','99 Problems Ave, Alpine, NJ 07043','Roaster','12312312',101,2),
-  (104,'Toph','Beifong','111 Washington St., Hoboken, NJ 07043','Manager','99988777',101,3),
-  (105,'Eren','Yeagar','Wall Rose St., Newark, NJ 07101','Distributor','10101010',104,3);
+insert into employee (empID, emp_fname, emp_lname, emp_address, position, ssn, managerID, deptID, e_username, e_passwd) values
+  (100,'Gelber','Castillo','1 Normal Ave, Montclair, NJ 07043',1,'123456789',100,1, 'gelber', '123456'),
+  (101,'Samuel','Rufino','1 Normal Ave, Montclair, NJ 07043',1,'987654321',101,2,'samuel', '123456'),
+  (102,'Jane','Doe','10 Test Ave, Hoboken, NJ 07043',2,'555555555',100,1,'janed', '123456'),
+  (103,'Joe','Shmoe','99 Problems Ave, Alpine, NJ 07043',2,'123123123',101,2,'joesh', '123456'),
+  (104,'Toph','Beifong','111 Washington St., Hoboken, NJ 07043',3,'999887777',101,3,'toph', '123456'),
+  (105,'Eren','Yeagar','Wall Rose St., Newark, NJ 07101',3,'101010101',104,3,'ereny', '123456');
 
 create table cart
   ( userID int unsigned not null,
@@ -110,14 +109,14 @@ create table orders
     ordertime datetime not null,
     coffeeID int(4) unsigned not null,
     quantity int(3) unsigned not null,
+    total float(4,2),
 
     foreign key (userID) references customer(userID),
     foreign key (coffeeID) references coffee(coffeeID)
   );
 
-  insert into orders (userID, ordertime, coffeeID, quantity) values
-    (1, '0000-00-00 00:00:00', 7001, 1),
-    (1, '0000-00-00 00:00:00', 7002, 2),
-    (1, '0000-00-00 00:00:00', 7003, 1),
-    (2, '0000-00-00 00:00:00', 7001, 2);
-
+  insert into orders (userID, ordertime, coffeeID, quantity, total) values
+    (1, '2021-01-01 01:00:00', 9001, 1, 9.99),
+    (1, '2021-05-01 01:00:00', 9002, 2, 29.98),
+    (1, '2021-05-01 01:00:00', 9003, 1, 8.99),
+    (2, '2021-04-11 01:00:00', 9001, 2, 19.98);
