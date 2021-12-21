@@ -1,23 +1,15 @@
-<html>
-<head>
-  <?php
+<?php
   session_start();
   require_once('functions.php');
   include "header.php";
   check_valid_user();
-  ?>
-</head>
-<body>
-  <?php
-  $ordertime  = $_GET['ordertime'];
+
+  $ordertime  = $_POST['ordertime'];
   $total      = 0;
   $grandtotal = 0;
   $NJtax      = 1.06625;
-  @ $db = new mysqli('localhost', 'root', '', 'RoyalRoasters');
-  if (mysqli_connect_errno()) {
-     echo "Error: Could not connect to database.  Please try again later.";
-     exit;
-  }
+
+  @ $db = DBconnect();
   $orderquery =   "select orders.*, coffeeName, price
                   from coffee
                   join orders on coffee.coffeeID = orders.coffeeID
