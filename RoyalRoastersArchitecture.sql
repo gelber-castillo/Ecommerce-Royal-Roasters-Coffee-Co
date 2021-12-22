@@ -2,8 +2,6 @@
 -- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Dec 22, 2021 at 12:17 AM
 -- Server version: 5.7.36
 -- PHP Version: 7.3.33
 
