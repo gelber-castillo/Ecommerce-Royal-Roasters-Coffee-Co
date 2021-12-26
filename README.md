@@ -1,6 +1,6 @@
 # Royal Roasters Coffee Co.
 </br>
-An e-commerce website developed using PHP, stylized with CSS, and with a database written in SQL to provide customers with an authentic shopping experience.</br>
+An e-commerce website developed using PHP and HTML, stylized with CSS, and with a database written in SQL to provide customers with an authentic shopping experience.</br>
 There are 4 unique views deployed; the customer view, the employee view, the manager view, and the owner view, with each varying in capacities and permissions.</br>
 Using phpMyAdmin and MySQL, a database consisting of coffee products, customer and employee account information, a customer's itemized cart, and a personalized order history system was constructed that was queried and manipulated in almost every page of the website. </br>
 No credit card or other forms of payment information was taken or stored due to project guidelines; no profit was made from the products displayed.</br>
